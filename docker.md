@@ -22,7 +22,7 @@ Some helpful Docker commands:
 | `docker-compose start` | start existing container/s |
 | `docker-compose down` | stop and remove container/s and networks |
 | `docker build -t <image name> .` | build an image directly from a Dockerfile from current directory |
-| `docker run -d -p <internal port>:<external port> <image name>` | start a container from image and detach from it |
+| `docker run --name <friendly name> -d -p <internal port>:<external port> <image name>` | start a container with a friendly name from image in detached mode |
 | `docker exec -it <container id> /bin/bash` | execute `/bin/bash` in a given container -> it connects you to the container |
 
 Tips:
