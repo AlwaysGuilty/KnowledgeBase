@@ -14,7 +14,7 @@ Some helpful Docker commands:
 | `docker ps` | list running containers |
 | `docker ps -a` | list ALL containers |
 | `docker images` | list images |
-| `docker rmi <image id>` | remove image | 
+| `docker rmi -f <image id>` | remove image, force | 
 | `docker rm <container>` | remove container |
 | `docker container prune` | remove all stopped containers |
 | `docker image prune` | remove dangling images |
