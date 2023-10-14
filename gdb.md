@@ -38,7 +38,7 @@ Some commands (with pwndbg installed):
 | `x/Yi <address>` | examine Y instructions beginning with the specified address |
 | `x/Ys <address>` | examine Y strings beginning with the specified address |
 | `b * <address>` | make a breakpoint |
-| `del <breakpoint>` | delete a breakpoint |
+| `del <breakpoint number>` | delete a breakpoint |
 
 Tips:
 - To repeat the same command, just press `Enter`
