@@ -14,6 +14,6 @@ Attaching GDB:
 | Example | Description |
 |-|-|
 | `dbg = gdb.attach(process, gdbscript)` | Attaches to an existing process and so might attach too late for out needs. |
-| `p = gdb.debug(gdbscript)` | Spawns a new process with GDB already attached to it. |
+| `p = gdb.debug(binary, gdbscript)` | Spawns a new process with GDB already attached to it. |
 
 
