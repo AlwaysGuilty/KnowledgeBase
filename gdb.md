@@ -14,9 +14,9 @@ Some commands (with pwndbg installed):
 | Command | Description |
 |-|-|
 | `help all` | lists all commands |
-| `r` | run the binary |
-| `q` | exit GDB | 
-| `c` | continue |
+| `(r)un` | run the binary |
+| `(q)uit` | exit GDB | 
+| `(c)ontinue` | continue |
 | `context` | prints registers, instructions and stacktrace |
 | `ni` | next instruction |
 | `si` | step in |
@@ -39,6 +39,7 @@ Some commands (with pwndbg installed):
 | `x/Ys <address>` | examine Y strings beginning with the specified address |
 | `b * <address>` | make a breakpoint |
 | `del <breakpoint number>` | delete a breakpoint |
+| `(p)rint <address/symbol>` | prints contents on specified address/symbol |
 
 Tips:
 - To repeat the same command, just press `Enter`
