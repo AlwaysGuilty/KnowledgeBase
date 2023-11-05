@@ -34,10 +34,10 @@ Some commands (with pwndbg installed):
 | `bins` | prints heap bins |
 | `arena` | prints info about `main_arena` |
 | `x <address>` | examine address |
-| `x/Yx <address>` | examine Y addresses in hex beginning with the specified address |
-| `x/Ygx <address>` | examine Y quadwords in hex beginning with the specified address |
-| `x/Yi <address>` | examine Y instructions beginning with the specified address |
-| `x/Ys <address>` | examine Y strings beginning with the specified address |
+| `x/Yx <address>` | examine Y addresses in hex, beginning with the specified address |
+| `x/Ygx <address>` | examine Y quadwords in hex, beginning with the specified address |
+| `x/Yi <address>` | examine Y instructions, beginning with the specified address |
+| `x/Ys <address>` | examine Y strings, beginning with the specified address |
 | `b * <address>` | make a breakpoint |
 | `del <breakpoint number>` | delete a breakpoint |
 | `(p)rint <address/symbol>` | prints contents on specified address/symbol |
