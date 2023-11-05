@@ -33,6 +33,19 @@ io = gdb.debug(bin.path, gdbscript="""
 ```
 
 
+### Receiving leak
+
+If receiving leak in the shape of a string, eg. `0x7ff8abdef500`:
+```python
+leak = io.recvline().strip().decode()
+leak = int(leak, 16)
+```
+If receiving leak in the shape of packed bytes, eg. `\xff\xff\xff\xff\xff\xff`:
+```python
+leak = u64(io.recvline().strip().ljust(8, b"\x00"))
+```
+
+
 ### ELF
 
 ```python
