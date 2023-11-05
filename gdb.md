@@ -8,7 +8,8 @@ cd pwndbg
 ```
 
 Usage:
-- `gdb -q <binary>` - the `-q` switch disables some of the bloat prints
+- `gdb -q <binary>`
+    - `-q`: quiet, disables some bloat prints
 
 Some commands (with pwndbg installed):
 | Command | Description |
