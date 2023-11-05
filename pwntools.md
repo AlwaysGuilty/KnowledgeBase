@@ -11,9 +11,6 @@ Provides a python library `pwn` and various CLI tools, like `cyclic` and `checks
 | `context.terminal = ["terminator", "-e"]` | terminator |
 
 Attaching GDB:
-| Example | Description |
-|-|-|
-| `dbg = gdb.attach(process, gdbscript)` | Attaches to an existing process and so might attach too late for out needs. |
-| `p = gdb.debug(binary, gdbscript)` | Spawns a new process with GDB already attached to it. |
-
-
+- `dbg = gdb.attach(process, gdbscript)` Attaches to an existing process and so might attach too late for out needs.
+  or
+- `p = gdb.debug(binary path, gdbscript)` Spawns a new process with GDB already attached to it.
