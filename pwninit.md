@@ -20,5 +20,5 @@ Template solve script can look something like [this](pwninit-template.py).
 
 Make shell alias:
 ```sh
-echo "alias pwninit='pwninit --template-path ~/.config/pwninit-template.py --template-bin-name e'" >> ~/.zshrc
+echo "alias pwninit='pwninit --template-path ~/.config/pwninit-template.py'" >> ~/.zshrc
 ```
