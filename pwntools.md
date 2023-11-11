@@ -8,7 +8,7 @@ Provides a python library `pwnlib` and various CLI tools, like `cyclic` and `che
 | Setting | Description |
 |-|-|
 | `context.terminal = ["tmux", "splitw", "-h"]` | tmux with horizontal split |
-| `context.terminal = ['/mnt/d/dsec/tools/wsl-terminal/open-wsl.exe', '-e']` | OpenWSL terminal emulator |
+| `context.terminal = ['/path/to/wsl-terminal/open-wsl.exe', '-e']` | OpenWSL terminal emulator |
 | `context.terminal = ["wt.exe", "bash", "-c"]` | Windows Terminal |
 | `context.terminal = ["terminator", "-e"]` | terminator |
 
