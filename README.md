@@ -8,4 +8,5 @@ This repo serves as collection of notes on various Linux and other tools.
 2. [Docker](docker.md)
 3. [GDB](gdb.md)
 4. [pwntools](pwntools.md)
-5. [ffmpeg](ffmpeg.md)
+5. [pwninit](pwninit.md)
+6. [ffmpeg](ffmpeg.md)
