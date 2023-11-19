@@ -7,26 +7,30 @@ PORT = 1337
 
 {bindings}
 context.binary = {bin_name}
-io = None
-gdbscript = """"""
+context.terminal = ["tmux", "splitw", "-h"]
 
+gdbscript = """
+c
+"""
 
-def conn():
-    global io
-    if args.LOCAL:
-        io = process({proc_args})
-    elif args.GDB:
-        io = gdb.debug({bin_name}.path, gdbscript=gdbscript)
+def conn() -> process:
+    if args.GDB:
+        return gdb.debug({bin_name}.path, gdbscript=gdbscript)
     elif args.REMOTE:
-        io = remote(ADDR, PORT)
+        return remote(ADDR, PORT)
     else:
-        raise Exception
+        return process({proc_args})
+
+io = conn()
+
+# lambdas
+ru = lambda a: io.recvuntil(a)
+r  = lambda a: io.recv(a)
+sla = lambda a,b: io.sendlineafter(a, b)
+sa = lambda a,b: io.sendafter(a, b)
+sl = lambda a: io.sendline(a)
+s = lambda a: io.send(a)
 
 
-def main():
-    conn()
-    io.interactive()
 
-
-if __name__ == "__main__":
-    main()
+io.interactive()
