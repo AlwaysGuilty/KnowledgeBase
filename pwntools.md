@@ -4,7 +4,18 @@ Provides a python library `pwnlib` and various CLI tools, like `cyclic` and `che
 
 
 ### Context
-`terminal.context` examples:
+
+Options:
+- `context.terminal`
+- `context.arch`
+- `context.binary`
+- `context.os`
+- `context.endian`
+- `context.bits`
+
+Updating context:
+
+`context.terminal` examples:
 | Setting | Description |
 |-|-|
 | `context.terminal = ["tmux", "splitw", "-h"]` | tmux with horizontal split |
