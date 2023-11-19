@@ -54,7 +54,7 @@ io = gdb.debug(bin.path, gdbscript="""
 
 ### Receiving leak
 
-If receiving leak in the shape of a string, eg. `0x7ff8abdef500`:
+If receiving leak in a hex shape, eg. `0x7ff8abdef500`:
 ```python
 leak = io.recvline().strip().decode()
 leak = int(leak, 16)
