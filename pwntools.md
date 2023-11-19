@@ -5,23 +5,31 @@ Provides a python library `pwnlib` and various CLI tools, like `cyclic` and `che
 
 ### Context
 
-Options:
-- `context.terminal`
-- `context.arch`
-- `context.binary`
-- `context.os`
-- `context.endian`
-- `context.bits`
-
 Updating context:
+- `context.<variable> = <setting>`
+or
+- `context.update(<variable_1>=<setting_1>, ...)`
 
-`context.terminal` examples:
-| Setting | Description |
-|-|-|
-| `context.terminal = ["tmux", "splitw", "-h"]` | tmux with horizontal split |
-| `context.terminal = ['/path/to/wsl-terminal/open-wsl.exe', '-e']` | OpenWSL terminal emulator |
-| `context.terminal = ["wt.exe", "bash", "-c"]` | Windows Terminal |
-| `context.terminal = ["terminator", "-e"]` | terminator |
+| Context variable | Settings | Description |
+|-|-|-|
+| `context.terminal` |||
+|| `["tmux", "splitw", "-h"]` | Tmux with horizontal split |
+|| `['tmux', 'split-window', '-h', '-F', '#{pane_id}', '-P']` | Tmux bitch |
+|| `['/path/to/wsl-terminal/open-wsl.exe', '-e']` | OpenWSL terminal emulator |
+|| `["wt.exe", "bash", "-c"]` | Windows Terminal |
+|| `["terminator", "-e"]` | Terminator |
+| `context.arch` |||
+|| `"amd64"` ||
+|| `"i386"` ||
+| `context.binary` | `<executable>` ||
+| `context.os` | `"linux"` ||
+| `context.endian` | `"little"` ||
+| `context.bits` |||
+|| `32` ||
+|| `64` ||
+| `context.log_level` |||
+|| `"debug"` ||
+|| `"info"` ||
 
 
 ### Attaching GDB
