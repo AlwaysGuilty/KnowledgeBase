@@ -25,11 +25,13 @@ Some commands (with pwndbg installed):
 | `so` | step over |
 | `n` | same as `s`, but does not step into functions |
 | `info file` | lists sections |
+| `info program` | same as `info file` |
 | `info proc mappings` | prints address space layout |
 | `info registers` | prints content of registers |
 | `info locals`| prints info about local variables |
+| `info functions` | lists all functions |
 | `info (b)reakpoints` | prints breakpoints |
-| `info address <(namespaced) address>`| prints info about the address |
+| `info address <address/symbol>`| prints info about the address |
 | `env` | prints environ |
 | `piebase` | prints PIE base |
 | `vmmap` | `info proc mappings` but better |
