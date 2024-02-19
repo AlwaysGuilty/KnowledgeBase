@@ -15,6 +15,10 @@ unbind C-b
 bind C-a send-prefix
 
 set -g base-index 1
+set -g pane-base-index 1
+set-window-option -g pane-base-index 1
+set -g renumber-windows	on
+
 set -g history-limit 10000
 
 set -g mouse
