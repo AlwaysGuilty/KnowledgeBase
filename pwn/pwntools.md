@@ -34,23 +34,25 @@ or
 
 ### Attaching GDB
 
-- `dbg = gdb.attach(process, gdbscript)` Attaches to an existing process and so might attach too late for out needs.
+- `dbg = gdb.attach(<process>, <gdbscript>)` Attaches to an existing process and so might attach too late for out needs.
 
 or
 
-- `p = gdb.debug(binary path, gdbscript)` Spawns a new process with GDB already attached to it.
+- `p = gdb.debug(<binary path>, <gdbscript>)` Spawns a new process with GDB already attached to it.
 
 
-### Make GDB not follow child processes
+### Typical GDB setup
 
 ```python
 io = gdb.debug(bin.path, gdbscript="""
                 set follow-fork-mode parent
                 set detach-on-fork on
-                ...
+                b * __libc_start_main
+                c
                """)
 ```
 
+> `set follow-fork-mode parent` and `set detach-on-fork on` are used to make GDB not follow child processes that our program spawns.
 
 ### Receiving leak
 

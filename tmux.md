@@ -27,13 +27,15 @@ A note on using tmux keybinds: **DO NOT** press they prefix key and the keybind 
 | `tmux` | opens a new unnamed tmux session |
 | `tmux new -s <name>` | opens a new named tmux session |
 | `tmux ls` | list tmux sessions |
-| `tmux attach -t <name>` | attach to a tmux session
+| `tmux attach -t <name>` | attach to a named tmux session |
+| `tmux a` | attach to previously opened session |
 | `tmux detach` | detach from session |
 | `tmux kill-session -t <session>`| kills a specified session |
 
 
 | Keybind | Description |
 |-|-|
+| `Ctrl + D` | Detach from the session |
 | `(prefix) + ?` | View all keybinds. Press `q` to quit. |
 | `(prefix) + C` | new window |
 | `(prefix) + "` | horizontal split |

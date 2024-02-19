@@ -1,12 +1,14 @@
 # KnowledgeBase
 
-This repo serves as collection of notes on various Linux and other tools.
+This repo serves as collection of notes on pwn and various other tools.
 
 ## Table of contents
 
-1. [Tmux](tmux.md)
-2. [Docker](docker.md)
-3. [GDB](gdb.md)
-4. [pwntools](pwntools.md)
-5. [pwninit](pwninit.md)
-6. [ffmpeg](ffmpeg.md)
+1. [pwn](pwn)
+    - [GDB](pwn/gdb.md)
+    - [pwninit](pwn/pwninit.md)
+    - [pwntools](pwn/pwntools.md)
+2. other
+    - [Tmux](tmux.md)
+    - [Docker](docker.md)
+    - [ffmpeg](ffmpeg.md)

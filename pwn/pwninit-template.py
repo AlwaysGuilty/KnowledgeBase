@@ -26,8 +26,9 @@ io = conn()
 # lambdas
 ru = lambda a: io.recvuntil(a)
 r  = lambda a: io.recv(a)
-sla = lambda a,b: io.sendlineafter(a, b)
-sa = lambda a,b: io.sendafter(a, b)
+rl = lambda: io.recvline()
+sla = lambda a, b: io.sendlineafter(a, b)
+sa = lambda a, b: io.sendafter(a, b)
 sl = lambda a: io.sendline(a)
 s = lambda a: io.send(a)
 

@@ -1,6 +1,8 @@
 # GDB
 
-Install `pwndbg`:
+Install `gdb`: `sudo apt install -y gdb`
+
+Install `pwndbg` plugin:
 ```
 git clone https://github.com/pwndbg/pwndbg
 cd pwndbg
@@ -19,19 +21,20 @@ Some commands (with pwndbg installed):
 | `(q)uit` | exit GDB |
 | `(c)ontinue` | continue |
 | `context` | prints registers, instructions and stacktrace |
-| `ni` | next instruction |
-| `s N` | executes next N lines of the program, 1 if N not specified, stepping into functions |
+| `(lay)out next` | prints next layout |
+| `ni`/`nexti` | next instruction |
+| `(s)tep N` | executes next N lines of the program, 1 if N not specified, stepping into functions |
+| `(n)ext` | same as `s`, but does not step into functions |
 | `si` | step in |
 | `so` | step over |
-| `n` | same as `s`, but does not step into functions |
-| `info file` | lists sections |
-| `info program` | same as `info file` |
-| `info proc mappings` | prints address space layout |
-| `info registers` | prints content of registers |
-| `info locals`| prints info about local variables |
-| `info functions` | lists all functions |
-| `info (b)reakpoints` | prints breakpoints |
-| `info address <address/symbol>`| prints info about the address |
+| `(i)nfo file` | lists sections |
+| `(i)nfo program` | same as `info file` |
+| `(i)nfo proc mappings` | prints address space layout |
+| `(i)nfo registers` | prints content of registers |
+| `(i)nfo locals`| prints info about local variables |
+| `(i)nfo functions` | lists all functions |
+| `(i)nfo (b)reakpoints` | prints breakpoints |
+| `(i)nfo address <address/symbol>`| prints info about the address |
 | `env` | prints environ |
 | `piebase` | prints PIE base |
 | `vmmap` | `info proc mappings` but better |
@@ -53,6 +56,9 @@ Some commands (with pwndbg installed):
 | `(d)own` | go down N function calls in the stack trace, 1 if N not sspecified |
 | `l` | prints source code that's begin currently executed |
 | `f` | run the program until the current function is finished |
+| `set follow-fork-mode parent` | |
+| `set detach-on-fork on` | |
+| `(ref)resh` | re-prints context |
 
 
 Tips:
