@@ -48,3 +48,10 @@ A note on using tmux keybinds: **DO NOT** press they prefix key and the keybind 
 | `(prefix) + :` | Open command line. You can use it to input settings like `set -g mouse` |
 | `(prefix) + ,` | open command line to rename the window |
 | `(prefix) + [` | Scroll mode: use arrow keys or `(prefix) + PgUp/PgDn` to scroll up/down. Press `q` to quit from scroll mode. |
+
+Copy and pasting text:
+1. `(prefix) + [` to enter into scroll mode
+2. navigate to text you would like to copy
+3. `Ctr + Space` to enter copy mode
+4. select text with `<arrow keys>`/`PgUp`/`PgDn`/`Home`/`End`
+5. `Alt + W` to copy and exit from scroll mode
