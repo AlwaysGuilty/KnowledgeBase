@@ -50,12 +50,12 @@ Some commands (with pwndbg installed):
 | `b * <address>` | make a breakpoint |
 | `(d)el <breakpoint number>` | delete a breakpoint |
 | `(p)rint <address/symbol>` | prints contents on specified address/symbol |
-| `set <address> = <value>` | example: `set *0x555555573428 = 0x414141` |
+| `set <address/register> = <value>` | example: `set *0x555555573428 = 0x414141` or `set $zf=0` to set zero flag register |
 | `bt` | view backtrace, colorized |
 | `(u)p N` | go up N function calls in the stack trace, 1 if N not sspecified |
 | `(d)own` | go down N function calls in the stack trace, 1 if N not sspecified |
 | `l` | prints source code that's begin currently executed |
-| `f` | run the program until the current function is finished |
+| `(f)inish` | run the program until the current function is finished |
 | `set follow-fork-mode parent` | |
 | `set detach-on-fork on` | |
 | `(ref)resh` | re-prints context |
