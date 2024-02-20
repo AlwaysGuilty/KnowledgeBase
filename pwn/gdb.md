@@ -19,6 +19,7 @@ Some commands (with pwndbg installed):
 | `help all` | lists all commands |
 | `(r)un` | run the binary |
 | `(q)uit` | exit GDB |
+| `starti` | runs the binary and breaks at start |
 | `(c)ontinue` | continue |
 | `context` | prints registers, instructions and stacktrace |
 | `(lay)out next` | prints next layout |
