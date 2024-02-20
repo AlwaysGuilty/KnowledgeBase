@@ -1,4 +1,4 @@
-# GDB
+# GDB (pwndbg)
 
 Install `gdb`: `sudo apt install -y gdb`
 
@@ -13,13 +13,14 @@ Usage:
 - `gdb -q <binary>`
     - `-q`: quiet, disables some bloat prints
 
-Some commands (with pwndbg installed):
+Some commands:
 | Command | Description |
 |-|-|
 | `help all` | lists all commands |
 | `(r)un` | run the binary |
 | `(q)uit` | exit GDB |
-| `starti` | runs the binary and breaks at start |
+| `starti` | runs the binary and breaks in ld.so |
+| `start i` | runs the program and breaks in entrypoint |
 | `(c)ontinue` | continue |
 | `context` | prints registers, instructions and stacktrace |
 | `(lay)out next` | prints next layout |
