@@ -19,6 +19,7 @@ Some commands:
 | `help all` | lists all commands |
 | `(r)un` | run the binary |
 | `(q)uit` | exit GDB |
+| `start` | |
 | `starti` | runs the binary and breaks in ld.so |
 | `start i` | runs the program and breaks in entrypoint |
 | `(c)ontinue` | continue |
