@@ -30,7 +30,9 @@ or
 | `context.log_level` |||
 || `"debug"` ||
 || `"info"` ||
-
+| `context.aslr` |||
+|| `True` ||
+|| `False` ||
 
 ### Attaching GDB
 

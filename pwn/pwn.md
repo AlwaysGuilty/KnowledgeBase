@@ -142,7 +142,6 @@ python3 -c "print(payload)" | ./bin
 pwntools
 
 
-
 ## FSOP
 
 ### reading to arbitrary memory instead to predetermined buffer
