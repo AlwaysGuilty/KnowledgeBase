@@ -62,10 +62,14 @@ Some commands:
 | `set follow-fork-mode parent` | |
 | `set detach-on-fork on` | |
 | `(ref)resh` | re-prints context |
-
+| `layout asm` | switch to TUI asm layout |
+| `layout src` | switch to TUI source code layout |
+| `layout regs` | switch to TUI register layout |
+| `layout split` | switch to TUI split view of asm and source code layout |
 
 Tips:
 - To repeat the same command, just press `Enter`
 - Instead of addresses, you can also provide thair corresponding symbols, if they have any
 - Values in registers can be specifed with `$<register>`, e.g. `x/40gx $rsp`. Addition and substraction is also allowed: `x/40gx $rsp - 10`
 - When debugging C++ programs, class variables and methods can be specified like so: `b BFTask::incrementCellValue`
+- Hotkey for toggling TUI is `Ctrl-X A`
