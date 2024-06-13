@@ -3,15 +3,14 @@
 ## Table of contents
 
 1. [Intro](#intro)
-2. [ASLR](#aslr-address-space-layout-randomization)
+2. [Protections](#aslr-address-space-layout-randomization)
 
 
 ## Intro
 
 Knowledge prerequisites:
 - a bit of C basics
-- a bit of Linux general basics
-- a bit of OS basics
+- a bit of Linux OS basics
 
 ### Motivation
 
@@ -21,12 +20,12 @@ Successfully spawning shell, it can then lead on to attempting privesc, giving c
 
 Throughout these notes, I will first try to explain relevant concepts that are usually useful pwning, and then walk through some basic exploit techniques I have seen in CTFs.
 
-### Types of pwn
+### Types of pwn challanges
 
 Types by area of explotation:
 - userspace
-    - stack-based
-    - heap-based
+    - [stack-based](stack-based-pwn.md)
+    - [heap-based](heap-based-pwn.md)
 - kernel
 - VM
 - browser
@@ -45,7 +44,7 @@ Those two calls are not completely identical. `system("/bin/sh")` first calls `f
 
 ## ELF
 
-To start pwning, we first need to understand how target binaries are built. They are going to be of `ELF` format, which stands for executable and linkable format.
+To start pwning, we first need to understand how target binaries are built. They are going to be of the `ELF` format (Executable and Linkable Format).
 
 `ELF`s are used to store object files. Consequentally, every C program you compile is compiled to an object file of `ELF` format.
 
@@ -62,20 +61,27 @@ To start pwning, we first need to understand how target binaries are built. They
 - stack
 - environ
 
+> TODO: Fix this shit above, mapping ELF segments to process sections
 
 ## Protections
 
-Protections are mitigation methods of preventing hackers from harming system.
+Protections are mitigation methods of preventing hackers from harming the system.
 
-### ASLR (Address Space Layout Randomization)
+### ASLR and PIE (Address Space Layout Randomization)
 
-Randomizes several sections in the process address space preventing predictably jumping to wanted locations.
+Address space layout randomization (ALSR) randomizes several sections in the process address space preventing predictably jumping to wanted locations.
 
 ASLR is a setting that lives in the OS kernel.
 It can hold 3 different values:
 - `0`: disabled
-- `1`: randomization of stack, virtual dynamic shared object page (VDSO) and shared memory regions
+- `1`: randomization of stack, virtual dynamic shared object page (VDSO) and shared memory regions (libc)
 - `2`: same as `1` plus randomized data segments. Default on most systems.
+
+#### PIE (Position Independant Executable)
+
+Position independant executables are made from PICs (Position Independant Code). If the binary is compiled as PIE, it uses ASLR to randomize base addresses of memory pages that are used for `.text` section (program's code, global variables, `.got`).
+
+So if PIE is enabled, we have to first leak binary's base address to calculate actual `.text` addresses, should we need them.
 
 ### RELRO (Relocation Read-Only)
 
@@ -97,20 +103,13 @@ Makes stack and global variables not executable. Usually enabled.
 
 ### Fortify
 
-Checks for some buffer overflows at compile time.
+Checks for some buffer overflows at compile time, but being ineffective at it.
 
 ### Stack canary
 
 Also known as Stack Smashing Protection (SSP).
 
 Prevents stack-based BOFs by inserting canaries (predetermined random values) after a buffer and before return address. Right before the function would return, it checks if the canary is still in the stack frame at the right location holding the right value. If it is not, it makes the program exit with the famous `stask smashing detected` message.
-
-### PIE (Position Independant Executable)
-
-PIEs are made from PICs (Position Independant Code). Makes executables have randomized base address, taking advantage of ASLR.
-
-So if PIE is enabled, we have to first leak binary's base address to calculate actual `.text` addresses, should we need them.
-
 
 ## Calling conventions
 
@@ -140,31 +139,3 @@ python3 sol.py | ./bin                  closes fd so we dont get to shell
 python3 -c "print(payload)" | ./bin
 
 pwntools
-
-
-## FSOP
-
-### reading to arbitrary memory instead to predetermined buffer
-
-- set flag vals if needed
-- set `read_ptr` = `read_end`, so that next read "flushes" and overwrites the buffer with new bytes from the file
-- set `buf_base` to arbitrary address to write to
-- set `buf_end` to new `buf_base` + some length offset
-- constraint: `buf_end - buf_base` >= n of bytes to read
-
-in simpler terms:
-- make sure there is no `"no reading"` flag set
-- set `buf_base` and `buf_end`
-- set every other ptr to NULL
-
-### writing from arbitrary memory to IO buffer
-
-- set `write_base` to arbitrary address
-- set `write_ptr` to that arbitrary addr plus some length offset, so that next write will flush buffer out to the file. Distance from `write_base` to `write_ptr` is normally the bytes that have been written to the write buffer but not yet flushed to the file.
-- set `read_end = write_base`. Accept this as a fact. `read_end` has some special use in writing and so this gets checked before flushing.
-- `buf_end - buf_base` >= n of bytes to write
-
-in simpler terms:
-- set `write_base` and `read_end` to the same address
-- set `write_ptr`
-- everything else is NULL

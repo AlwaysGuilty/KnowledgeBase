@@ -45,6 +45,7 @@ Some commands:
 | `set max-visualize-chunk-size <size>` | vizualize up to `<size>` bytes in chunks when running `vis` |
 | `bins` | prints heap bins |
 | `arena` | prints info about `main_arena` |
+| `heap -v <addr>`| prints info of the specified chunk |
 | `x <address>` | examine address |
 | `x/Yx <address>` | examine Y addresses in hex, beginning with the specified address |
 | `x/Ygx <address>` | examine Y quadwords in hex, beginning with the specified address |

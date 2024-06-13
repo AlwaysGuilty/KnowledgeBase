@@ -1,8 +1,8 @@
 # Heap Based Pwn
 
+> TODO: Write some stuff here
 
 ## Libc changelog of important things:
-
 
 ### 2.26
 
@@ -15,7 +15,7 @@
 
 ### 2.29
 
-...
+- ???
 
 ### 2.31
 
@@ -35,8 +35,7 @@
 
 ### 2.37
 
-- my kali
-
+- ???
 
 ### 2.39
 

@@ -88,6 +88,7 @@ main = elf.symbols["main"]
 bin_sh = next(libc.search(b"/bin/sh\x00"))
 ```
 
+> TODO: dynelf, fmt_str
 
 ### ROP
 

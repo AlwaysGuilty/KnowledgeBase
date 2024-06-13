@@ -17,6 +17,7 @@ Exploitation techniques:
 Helping techniques used in exploitation:
 - Return oriented programming (ROP)
 - Sigreturn oriented programming (SROP)
+- File stream oriented programming (FSOP)
 - Blind return oriented programming (BROP)
 - GOT overwrite
 - libc leaking:
@@ -51,5 +52,31 @@ There are a few ways of obtaining shell:
 
 In some challs you will be able to find `/bin/sh` in the binary itself, which helps, but then you will also need to calcualte PIE base, in case PIE is enabled.
 
+## FSOP
 
-## ret2csu
+### reading to arbitrary memory instead to predetermined buffer
+
+- set flag vals if needed
+- set `read_ptr` = `read_end`, so that next read "flushes" and overwrites the buffer with new bytes from the file
+- set `buf_base` to arbitrary address to write to
+- set `buf_end` to new `buf_base` + some length offset
+- constraint: `buf_end - buf_base` >= n of bytes to read
+
+in simpler terms:
+- make sure there is no `"no reading"` flag set
+- set `buf_base` and `buf_end`
+- set every other ptr to NULL
+
+### writing from arbitrary memory to IO buffer
+
+- set `write_base` to arbitrary address
+- set `write_ptr` to that arbitrary addr plus some length offset, so that next write will flush buffer out to the file. Distance from `write_base` to `write_ptr` is normally the bytes that have been written to the write buffer but not yet flushed to the file.
+- set `read_end = write_base`. Accept this as a fact. `read_end` has some special use in writing and so this gets checked before flushing.
+- `buf_end - buf_base` >= n of bytes to write
+
+in simpler terms:
+- set `write_base` and `read_end` to the same address
+- set `write_ptr`
+- everything else is NULL
+
+> TODO: ret2csu, sigrop, `leave; ret` ropping, stack pivoting
