@@ -140,7 +140,7 @@ mov rbp, rsp
 ```
 If the function needs any space for local variables, it will also substract from `rsp` as much as it needs.
 
-Epilogue is almost the same as prologue, except it does everything in reverse. First, if needed, it corrects the stack pointer by adding to it as much as it substracted in the function's prologue. Then, it does this:
+Epilogue is almost the same as prologue, except it does everything in reverse. First, if needed, it corrects the stack pointer by adding to it as much as it has substracted in the function's prologue. Then, it does this:
 ```asm
 leave
 ret
