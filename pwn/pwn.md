@@ -113,9 +113,13 @@ Prevents stack-based BOFs by inserting canaries (predetermined random values) af
 
 ## Calling conventions
 
-Reference: https://en.wikipedia.org/wiki/X86_calling_conventions
+References:
+- https://en.wikipedia.org/wiki/X86_calling_conventions
+- [syscall.sh](https://syscall.sh/)
 
-### Regular functions in x86-64
+### Regular function calling conventions in x86-64
+
+Registers:
 
 | no. of arg | register |
 |-|-|
@@ -127,6 +131,27 @@ Reference: https://en.wikipedia.org/wiki/X86_calling_conventions
 | 6. | r9 |
 | 7+ | stack, in reverse order |
 
+At compile time, most of the time, the compiler adds prologue and epilogue to the beginning and the end of the function, respectively.
+
+Function prologue:
+```asm
+push rbp
+mov rbp, rsp
+```
+If the function needs any space for local variables, it will also substract from `rsp` as much as it needs.
+
+Epilogue is almost the same as prologue, except it does everything in reverse. First, if needed, it corrects the stack pointer by adding to it as much as it substracted in the function's prologue. Then, it does this:
+```asm
+leave
+ret
+```
+
+In true x86 fashion, both of these instructions are aliases. `leave` does
+```asm
+mov rsp, rbp
+pop rbp
+```
+and `ret` is equivalent to `pop rip`.
 
 ## Writing exploits
 
