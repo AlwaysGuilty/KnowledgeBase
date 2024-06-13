@@ -20,7 +20,7 @@ Successfully spawning shell, it can then lead on to attempting privesc, giving c
 
 Throughout these notes, I will first try to explain relevant concepts that are usually useful pwning, and then walk through some basic exploit techniques I have seen in CTFs.
 
-### Types of pwn challanges
+### Types of pwn challenges
 
 Types by area of explotation:
 - userspace
