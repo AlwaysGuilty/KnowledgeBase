@@ -1,6 +1,7 @@
 # KnowledgeBase
 
 This repo serves as collection of notes on pwn and various other tools.
+In its free time, it is a mess.
 
 ## Table of contents
 
