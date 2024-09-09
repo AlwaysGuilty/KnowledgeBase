@@ -111,13 +111,30 @@ Also known as Stack Smashing Protection (SSP).
 
 Prevents stack-based BOFs by inserting canaries (predetermined random values) after a buffer and before return address. Right before the function would return, it checks if the canary is still in the stack frame at the right location holding the right value. If it is not, it makes the program exit with the famous `stask smashing detected` message.
 
-## Calling conventions
+## Basic x86-64
+
+General purpose registers:
+
+```
+| Size   | Accumulator     | Counter         | Data            | Base            | Stack Pointer   | Stack Base Pointer | Source | Destination |
+|:------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:------------------:|:------:|:-----------:|
+| 64-bit | rax             | rcx             | rdx             | rbx             | rsp             | rbp                | rsi    | rdi         |
+| 32-bit | eax             | ecx             | edx             | ebx             | esp             | ebp                | esi    | edi         |
+| 16-bit | ax              | cx              | dx              | bx              | sp              | bp                 | si     | di          |
+|  8-bit | ah     | al     | ch     | cl     | dh     | dl     | bh     | bl     | spl             | bpl                | sil    | dil         |
+```
+
+When addressing 8-bit registers, `h` stands for higher and `l` stands for lower 8 bits of their corresponding 16-bit register.
+
+Other registers: instruction pointer, segment registers and EFLAGS register.
+
+Memory is little-endian, which means multi-byte values are stored least significant byte (LSB) first. This does not apply to the bits inside of individual bytes.
+
+### Regular function calling conventions in x86-64
 
 References:
 - https://en.wikipedia.org/wiki/X86_calling_conventions
 - [syscall.sh](https://syscall.sh/)
-
-### Regular function calling conventions in x86-64
 
 Registers:
 
@@ -157,10 +174,10 @@ and `ret` is equivalent to `pop rip`.
 
 https://www.youtube.com/watch?v=qpyRz5lkRjE
 
-python3 sol.py | ./bin                  closes fd so we dont get to shell
+```sh
+python3 sol.py | ./bin                  # closes fd so we dont get to shell
 
-(python3 sol.py; cat) | ./bin           works
+(python3 sol.py; cat) | ./bin           # works
 
 python3 -c "print(payload)" | ./bin
-
-pwntools
+```

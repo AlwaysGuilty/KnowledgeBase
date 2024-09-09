@@ -32,6 +32,7 @@
 ### 2.35
 
 - Removed free and malloc hooks
+- Ubuntu 22.04
 
 ### 2.37
 
