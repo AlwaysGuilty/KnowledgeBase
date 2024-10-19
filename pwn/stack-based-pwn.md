@@ -9,14 +9,11 @@ Vulns:
 - writeable section that should not be, e.g. GOT
 - race conditions (mostly in kernel exploitation)
 
-Exploitation techniques:
-- [ret2win](#ret2win)
-- [ret2libc](#ret2libc)
-- [ret2csu](#ret2csu)
-
-Helping techniques used in exploitation:
+Various expoitation techniques:
 - Return oriented programming (ROP)
-- Sigreturn oriented programming (SROP)
+- Sigreturn oriented programming (SROP/SIGROP)
+- Dlresolve oriented programming (DLROP/ret2dlresolve)
+- `leave; ret` ropping
 - File stream oriented programming (FSOP)
 - Blind return oriented programming (BROP)
 - GOT overwrite
@@ -26,11 +23,14 @@ Helping techniques used in exploitation:
     - leak from GOT
 - pie leaking
 - stack leaking (for bypassing canary)
+- [ret2libc](#ret2libc)
+- [ret2csu](#ret2csu)
 - heap leaking
 - stack pivoting
 
-
 ## ret2win
+
+ret2win is a basic exploit, only appearing in actual baby challanges and not seen in proper CTFs.
 
 For this technique there needs to be a "win" function available. A "win" function is a function that provides shell access directly or one that opens the flag file and prints it to `stdout`. Such functions are usually found in beginner challs.
 
@@ -51,6 +51,10 @@ There are a few ways of obtaining shell:
 - some kind of shellcode
 
 In some challs you will be able to find `/bin/sh` in the binary itself, which helps, but then you will also need to calcualte PIE base, in case PIE is enabled.
+
+## SROP
+
+https://sashactf.gitbook.io/pwn-notes/pwn/setcontext#srop
 
 ## FSOP
 
@@ -79,4 +83,14 @@ in simpler terms:
 - set `write_ptr`
 - everything else is NULL
 
-> TODO: ret2csu, sigrop, `leave; ret` ropping, stack pivoting
+## ret2dlresolve
+
+https://book.hacktricks.xyz/binary-exploitation/rop-return-oriented-programing/ret2dlresolve
+
+## Stack pivoting
+
+https://sashactf.gitbook.io/pwn-notes/pwn/rop-2.34+/controlling-rbp
+
+## `leave; ret` ropping
+
+https://sashactf.gitbook.io/pwn-notes/ctf-writeups/htb-business-2024/no-gadgets

@@ -3,7 +3,9 @@
 ## Table of contents
 
 1. [Intro](#intro)
-2. [Protections](#aslr-address-space-layout-randomization)
+2. [ELF protections](#protections)
+3. [x86-64 basics](#basic-x86-64)
+4. [Sploits](#writing-exploits)
 
 
 ## Intro
@@ -26,6 +28,7 @@ Types by area of explotation:
 - userspace
     - [stack-based](stack-based-pwn.md)
     - [heap-based](heap-based-pwn.md)
+    - mix of the two
 - kernel
 - VM
 - browser
@@ -44,6 +47,8 @@ Those two calls are not completely identical. `system("/bin/sh")` first calls `f
 
 ## ELF
 
+Some literature: http://www.staroceans.org/e-book/Learning_Linux_Binary_Analysis.pdf
+
 To start pwning, we first need to understand how target binaries are built. They are going to be of the `ELF` format (Executable and Linkable Format).
 
 `ELF`s are used to store object files. Consequentally, every C program you compile is compiled to an object file of `ELF` format.
@@ -61,11 +66,13 @@ To start pwning, we first need to understand how target binaries are built. They
 - stack
 - environ
 
-> TODO: Fix this shit above, mapping ELF segments to process sections
+> TODO: Fix this shit above
 
 ## Protections
 
 Protections are mitigation methods of preventing hackers from harming the system.
+
+A useful blog: https://medium.com/@slimm609/checksec-d4131dff0fca
 
 ### ASLR and PIE (Address Space Layout Randomization)
 
@@ -89,7 +96,7 @@ Relro offers 2 options:
 
 #### Partial
 
-The default setting. Places `.got` before `.bss` in memory, eliminating BOF from `.bss` to `.got`.
+The default setting. Places `.got` before `.bss` in memory, eliminating BOF from `.bss` to `.got`. However, it still leaves the PLT writeable.
 
 #### Full
 
@@ -111,7 +118,9 @@ Also known as Stack Smashing Protection (SSP).
 
 Prevents stack-based BOFs by inserting canaries (predetermined random values) after a buffer and before return address. Right before the function would return, it checks if the canary is still in the stack frame at the right location holding the right value. If it is not, it makes the program exit with the famous `stask smashing detected` message.
 
-## Basic x86-64
+Absence of stack canary usually gives us an indication that somewhere in the binary there is a `ret2<something>` possible.
+
+## x86-64 basics
 
 General purpose registers:
 
@@ -172,7 +181,7 @@ and `ret` is equivalent to `pop rip`.
 
 ## Writing exploits
 
-https://www.youtube.com/watch?v=qpyRz5lkRjE
+Some techniques newbies tend to use at first:
 
 ```sh
 python3 sol.py | ./bin                  # closes fd so we dont get to shell
@@ -181,3 +190,7 @@ python3 sol.py | ./bin                  # closes fd so we dont get to shell
 
 python3 -c "print(payload)" | ./bin
 ```
+
+A basic demo of the oneliners: https://www.youtube.com/watch?v=qpyRz5lkRjE
+
+To avoid convoluted unreadable oneliners in bash/python, we use [pwntools](pwntools.md).
