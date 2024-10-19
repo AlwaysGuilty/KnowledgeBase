@@ -6,7 +6,7 @@ In its free time, it is a mess.
 ## Table of contents
 
 1. [pwn](pwn/pwn.md)
-    - [GDB](pwn/gdb.md)
+    - [Pwndbg](pwn/pwndbg.md)
     - [pwninit](pwn/pwninit.md)
     - [pwntools](pwn/pwntools.md)
 2. other

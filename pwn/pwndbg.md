@@ -1,4 +1,4 @@
-# GDB (pwndbg)
+# Pwndbg
 
 Install `gdb`: `sudo apt install -y gdb`
 
@@ -67,6 +67,7 @@ Some commands:
 | `layout src` | switch to TUI source code layout |
 | `layout regs` | switch to TUI register layout |
 | `layout split` | switch to TUI split view of asm and source code layout |
+| `search -p <value>` | search memory for a pointer |
 
 Tips:
 - To repeat the same command, just press `Enter`
