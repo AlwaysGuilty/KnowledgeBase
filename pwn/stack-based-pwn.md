@@ -94,3 +94,7 @@ https://sashactf.gitbook.io/pwn-notes/pwn/rop-2.34+/controlling-rbp
 ## `leave; ret` ropping
 
 https://sashactf.gitbook.io/pwn-notes/ctf-writeups/htb-business-2024/no-gadgets
+
+## BROP
+
+http://www.scs.stanford.edu/brop/bittau-brop.pdf
