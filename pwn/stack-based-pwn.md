@@ -1,5 +1,19 @@
 # Stack-based pwn
 
+## Table of contents
+
+1. [Overview](#overview)
+2. [ret2win](#ret2win)
+3. [ret2libc](#ret2libc)
+4. [stack pivoting](#stack-pivoting)
+5. [SROP](#srop)
+6. [FSOP](#fsop)
+7. [ret2dlresolve](#ret2dlresolve)
+8. [`leave; ret` ropping](#leave-ret-ropping)
+9. [BROP](#brop)
+
+## Overview
+
 Vulns:
 - Variable overflow, e.g. integer overflow
 - Buffer overflow (BOF)
@@ -52,6 +66,10 @@ There are a few ways of obtaining shell:
 
 In some challs you will be able to find `/bin/sh` in the binary itself, which helps, but then you will also need to calcualte PIE base, in case PIE is enabled.
 
+## Stack pivoting
+
+https://sashactf.gitbook.io/pwn-notes/pwn/rop-2.34+/controlling-rbp
+
 ## SROP
 
 https://sashactf.gitbook.io/pwn-notes/pwn/setcontext#srop
@@ -87,11 +105,7 @@ in simpler terms:
 
 https://book.hacktricks.xyz/binary-exploitation/rop-return-oriented-programing/ret2dlresolve
 
-## Stack pivoting
-
-https://sashactf.gitbook.io/pwn-notes/pwn/rop-2.34+/controlling-rbp
-
-## `leave; ret` ropping
+## leave-ret ropping
 
 https://sashactf.gitbook.io/pwn-notes/ctf-writeups/htb-business-2024/no-gadgets
 
