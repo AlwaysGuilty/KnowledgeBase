@@ -25,6 +25,8 @@ Some helpful Docker commands:
 | `docker run --name <friendly name> -d -p <internal port>:<external port> <image name>` | start a container with a friendly name from image in detached mode |
 | `docker exec -it <container id> /bin/bash` | execute `/bin/bash` in a given container -> it connects you to the container |
 | `docker run --name <friendly name> -it <image name> /bin/bash`| run the container and execute shell |
+| `docker save -o /path/to/file.tar <image name>` | Save docker image to a tar file. Useful for A/D pwns without source. |
+| `docker load -i /path/to/file.tar` | Load image from a file. |
 
 Tips:
 - `.dockerignore` - a file that works in the same fashion as `.gitignore`
