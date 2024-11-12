@@ -12,4 +12,5 @@ In its free time, it is a mess.
 2. other
     - [Tmux](tmux.md)
     - [Docker](docker.md)
+    - [GCC](gcc.md)
     - [ffmpeg](ffmpeg.md)
