@@ -11,4 +11,4 @@ I do not know the difference between regular and f-prefixed options.
 | `-fno-stack-protector` | compile without stack canary |
 | `-fstack-protector` | compile with stack protector |
 | `-no-pie` | compile without PIE |
-| `-entry` | specify a custom entry function instead of the `start` |
+| `--entry` | specify a custom entry function instead of the `start` |
