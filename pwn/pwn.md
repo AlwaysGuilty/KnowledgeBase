@@ -29,7 +29,7 @@ Types by area of explotation:
     - [stack-based](stack-based-pwn.md)
     - [heap-based](heap-based-pwn.md)
     - mix of the two
-- kernel
+- [kernel](linux-kernel-pwn.md)
 - VM
 - browser
 - web3
