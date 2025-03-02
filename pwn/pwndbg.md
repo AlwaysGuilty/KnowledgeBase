@@ -48,9 +48,10 @@ Some commands:
 | `heap -v <addr>`| prints info of the specified chunk |
 | `x <address>` | examine address |
 | `x/Yx <address>` | examine Y addresses in hex, beginning with the specified address |
-| `x/Ygx <address>` | examine Y quadwords in hex, beginning with the specified address |
+| `x/Yf <address>` | examine Y floats, beggining with the specified address |
 | `x/Yi <address>` | examine Y instructions, beginning with the specified address |
 | `x/Ys <address>` | examine Y strings, beginning with the specified address |
+| `x/Y<size><address>` | examine Y values of size `size`, beginning with the specified address. Common sizes: `g` (giant words - 8 Bytes), `w` (words - 4 Bytes) |
 | `b * <address>` | make a breakpoint |
 | `(d)el <breakpoint number>` | delete a breakpoint |
 | `(p)rint <address/symbol>` | prints contents on specified address/symbol |
