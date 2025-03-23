@@ -23,7 +23,7 @@
 
 ### 2.34
 
-- CSU removed (`pop rdi; ret` gadget, and others)
+- CSU hardened (`pop rdi; ret` gadget, and others removed)
 
 ### 2.35
 
@@ -37,6 +37,7 @@
 ### 2.39
 
 - https://securityonline.info/glibc-flaw-cve-2024-2961-opens-door-to-rce-poc-exploit-published/ or https://www.ambionics.io/blog/iconv-cve-2024-2961-p1
+- ubuntu 24.04
 
 ### 2.41 (feb 2025)
 
