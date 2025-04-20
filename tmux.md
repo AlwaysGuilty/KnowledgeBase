@@ -93,3 +93,7 @@ Copying and pasting text in vim mode:
 3. `Space` to start selection
 4. select text with `<arrow keys>`/`PgUp`/`PgDn`/`w` (go one word forward)/`b` (go one word backwards)/`V` (whole line)/`Home`/`End`
 5. `Enter` to copy selection and exit from copy mode
+
+## TPM
+
+https://github.com/tmux-plugins/tpm
