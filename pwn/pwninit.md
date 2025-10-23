@@ -22,3 +22,7 @@ Make shell alias:
 ```sh
 echo "alias pwninit='pwninit --template-path ~/.config/pwninit-template.py'" >> ~/.zshrc
 ```
+
+> WARNING
+>
+> If using WSL, have the working directory for the chall in the WSL filesystem to avoid weird behaviour when trying to patchelf the binaries.
